@@ -13,6 +13,7 @@
         :size="n === 1 ? 36 : 20"
         class="d-block text-center mx-auto mb-9"
       ></v-avatar>
+      <v-icon icon="mdi-ab-testing"></v-icon>
     </v-navigation-drawer>
 
     <v-main>
@@ -59,19 +60,18 @@ import ActReportDisplay from './components/ActReportDisplay.vue';
 console.debug('Devtools MAIN is loaded!');
 
 import { ACTRules, ACTRulesReport } from '@qualweb/act-rules';
-import { QWPage } from '@qualweb/qw-page';
-import { DomUtils, AccessibilityUtils } from '@qualweb/util';
 import locale_en from './locales/en.mts';
 
 const report = ref<ACTRulesReport | null>(null);
 
-function evaluatePage() {
+async function evaluatePage() {
   report.value = null;
 
-  window.qwPage = new QWPage(document, true);
-  window.DomUtils = DomUtils;
-  window.AccessibilityUtils = AccessibilityUtils;
-  window.disabledWidgets = AccessibilityUtils.getDisabledWidgets();
+  window.qwPage = new (await import('@qualweb/qw-page')).QWPage(document, true);
+  const qwUtil = await import('@qualweb/util');
+  window.DomUtils = qwUtil.DomUtils;
+  window.AccessibilityUtils = qwUtil.AccessibilityUtils;
+  window.disabledWidgets = window.AccessibilityUtils.getDisabledWidgets();
 
   window.act = new ACTRules({ translate: locale_en, fallback: locale_en });
 
