@@ -11,7 +11,7 @@
       "url": "https://www.inqludeit.dk",
       "webRoot": "${workspaceFolder}",
       "runtimeArgs": [
-        "--load-extension=${workspaceFolder}/dist",
+        // "--load-extension=${workspaceFolder}/dist",
       ],
     },
     {

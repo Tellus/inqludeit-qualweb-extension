@@ -24,12 +24,6 @@
       "./node_modules/@types",
       "./node_modules/@qualweb/types",
     ],
-
-    "types": [
-      "@qualweb/types/act-rules",
-      "@qualweb/act-rules",
-      "chrome",
-    ],
   },
   "include": [
     "src/**/*.ts",

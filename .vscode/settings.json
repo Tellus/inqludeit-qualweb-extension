@@ -5,5 +5,8 @@
       "url": "https://json.schemastore.org/chrome-manifest.json"
     }
   ],
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "volar.format.initialIndent": {
+    "html": true
+  }
 }
