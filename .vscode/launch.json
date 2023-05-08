@@ -10,6 +10,9 @@
       "name": "Launch Chrome against localhost",
       "url": "https://www.inqludeit.dk",
       "webRoot": "${workspaceFolder}",
+      "runtimeArgs": [
+        "--load-extension=${workspaceFolder}/dist",
+      ],
     },
     {
       "type": "node",
@@ -22,4 +25,13 @@
       ]
     },
   ],
+  "compounds": [
+    {
+      "name": "Launch all",
+      "configurations": [
+        "Launch Chrome against localhost",
+        "Launch vite",
+      ],
+    },
+  ]
 }                                                                          
