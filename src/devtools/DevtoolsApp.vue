@@ -16,11 +16,12 @@
     </v-navigation-drawer>
 
     <v-main>
-      <v-container fluid>
-
-        <v-row v-if="report === null">
+      <v-container
+      v-if="report === null"
+        fluid
+      >
+        <v-row >
           <v-spacer></v-spacer>
-
           <v-col cols="auto">
             <v-btn @click="evaluatePage">
               Evaluate
@@ -29,22 +30,32 @@
 
           <v-spacer></v-spacer>
         </v-row>
-
-        <v-row v-else>
-          <v-col>Report is done! Failed: {{ report.metadata.failed  }}</v-col>
+      </v-container>
+      <v-container
+        v-else
+        fluid
+      >
+        <v-row>
+          <v-col>Report is done! FAAAILED: {{ report.metadata.failed  }}</v-col>
           <v-col>
             <v-btn @click="evaluatePage">
               Re-evaluate
             </v-btn>
           </v-col>
         </v-row>
-
+        <v-row>
+          <v-col>
+            <ActReportDisplay :report="report"></ActReportDisplay>
+          </v-col>
+        </v-row>
       </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script setup lang="ts">
+import ActReportDisplay from './components/ActReportDisplay.vue';
+
 console.debug('Devtools MAIN is loaded!');
 
 import { ACTRules, ACTRulesReport } from '@qualweb/act-rules';
