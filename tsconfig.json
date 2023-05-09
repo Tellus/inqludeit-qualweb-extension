@@ -24,6 +24,13 @@
       "./node_modules/@types",
       "./node_modules/@qualweb/types",
     ],
+
+    "types": [
+      "@qualweb/types/act-rules",
+      "@qualweb/types/qwPage",
+      "@qualweb/types/locale",
+      "@qualweb/types/util",
+    ],
   },
   "include": [
     "src/**/*.ts",

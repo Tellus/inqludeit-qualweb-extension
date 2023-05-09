@@ -4,11 +4,13 @@ import { crx } from '@crxjs/vite-plugin';
 import manifest from './manifest.json' assert { type: 'json' };
 import { resolve } from 'node:path';
 import AutoImport from 'unplugin-auto-import/vite';
+import vuetifyPlugin from 'vite-plugin-vuetify';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
 		vue(),
+    vuetifyPlugin(),
     AutoImport({
       // targets to transform
       include: [
@@ -100,9 +102,11 @@ export default defineConfig({
     }
   },
   build: {
+    minify: false,
+    copyPublicDir: true,
     rollupOptions: {
       input: {
-        devtools_main: resolve(__dirname, 'src/pages/devtools_main.html'),
+        devtools_main: resolve(__dirname, 'src/devtools/index.html'),
       },
     },
   },
